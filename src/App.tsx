@@ -1,5 +1,14 @@
+import { BrowserRouter } from 'react-router-dom'
+import { Rotas } from './rotas'
+import { Header } from './components/Header'
+
 function App() {
-  return <h1>hello World</h1>
+  return (
+    <BrowserRouter>
+      <Header />
+      <Rotas />
+    </BrowserRouter>
+  )
 }
 
 export default App
