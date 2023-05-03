@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import coffeExpresso from '../../assets/coffees/expresso.png'
 import { Minus, Plus, ShoppingCart } from 'phosphor-react'
 import {
   ButtonShopCart,
@@ -12,28 +11,43 @@ import {
   ThumbContainer,
 } from './styled'
 
-export function CoffeCard() {
+interface ICoffee {
+  id: number
+  thumb: string
+  title: string
+  description: string
+  price: number
+  tags: string[]
+}
+
+interface ICoffeeProps {
+  coffee: ICoffee
+}
+
+export function CoffeCard({ coffee }: ICoffeeProps) {
   const [quantity, setQuantity] = useState(1)
   function addOneQuantity() {
     setQuantity((value) => value + 1)
   }
   function decreasesOneQuantity() {
-    setQuantity((value) => value - 1)
+    setQuantity((value) => (value > 1 ? value - 1 : value))
   }
   return (
     <CoffeeItem>
       <ThumbContainer>
-        <img src={coffeExpresso} alt="" />
+        <img src={coffee.thumb} alt="" />
         <div>
-          <CoffeeItemTag>Tradicional</CoffeeItemTag>
+          {coffee.tags.map((item) => (
+            <CoffeeItemTag key={item}>{item}</CoffeeItemTag>
+          ))}
         </div>
       </ThumbContainer>
       <CoffeeItemInfo>
-        <strong>Expresso Tradicional</strong>
-        <span>O tradicional café feito com água quente e grãos moídos</span>
+        <strong>{coffee.title}</strong>
+        <span>{coffee.description}</span>
         <FooterCoffeeItem>
           <span>
-            R$<strong>9,90</strong>
+            R$<strong>{coffee.price}</strong>
           </span>
           <InteractionsContainer>
             <InputContainer>

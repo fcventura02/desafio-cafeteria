@@ -11,8 +11,21 @@ import {
   TitleContainer,
 } from './styled'
 import { CoffeCard } from '../../components/CoffeeCard'
+import { useEffect, useState } from 'react'
 
 export function Home() {
+  const [mockData, setMockData] = useState<any[]>([])
+  useEffect(() => {
+    fetch('src/mockdata/coffeeMock.json')
+      .then((res) => {
+        return res.json()
+      })
+      .then((res) => {
+        const data = res || []
+        setMockData(() => [...data])
+        return res
+      })
+  }, [])
   return (
     <>
       <IntroStyle>
@@ -64,7 +77,9 @@ export function Home() {
       <CoffeesContainer>
         <h2>Nossos cafés</h2>
         <ListCoffee>
-          <CoffeCard />
+          {mockData.map((item) => (
+            <CoffeCard key={item.id} coffee={item} />
+          ))}
         </ListCoffee>
       </CoffeesContainer>
     </>
