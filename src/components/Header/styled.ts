@@ -25,6 +25,13 @@ export const ButtonLocation = styled.span`
   gap: 4px;
   padding: 8px;
   border-radius: 6px;
+  font-size: 0.8rem;
+  line-height: 1.5rem;
+
+  @media (min-width: 500px) {
+    font-size: 1rem;
+    line-height: 1.625rem;
+  }
 `
 
 export const ButtonCart = styled.button`

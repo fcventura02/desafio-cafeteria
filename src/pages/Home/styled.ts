@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import background from '../../assets/Background.png'
 
-export const HomeStyle = styled.div`
+export const IntroStyle = styled.div`
   padding: 28px 0;
   background: url(${background});
   background-repeat: no-repeat;
@@ -65,7 +65,7 @@ export const BannerContainer = styled.div`
     margin: 30px auto 0;
     width: 100%;
     @media (min-width: 615px) {
-      margin-top: 66px;
+      margin-top: 0;
       max-width: none;
     }
   }
@@ -118,4 +118,20 @@ export const IconList = styled.div<StatusProps>`
   border-radius: 100%;
   color: ${(props) => props.theme.white};
   background: ${(props) => props.theme[props.customColor]};
+`
+
+export const CoffeesContainer = styled.div`
+  max-width: 1120px;
+  width: 92%;
+  padding: 32px 0;
+  margin-inline: auto;
+`
+
+export const ListCoffee = styled.ul`
+  display: flex;
+  row-gap: 40px;
+  column-gap: 32px;
+  flex-wrap: wrap;
+  list-style: none;
+  margin-top: 40px;
 `
