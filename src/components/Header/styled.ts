@@ -33,22 +33,3 @@ export const ButtonLocation = styled.span`
     line-height: 1.625rem;
   }
 `
-
-export const ButtonCart = styled.button`
-  display: flex;
-  align-items: center;
-  justify-items: center;
-  background: ${(props) => props.theme.yellowLight};
-  color: ${(props) => props.theme.yellow};
-  padding: 8px;
-  border-radius: 6px;
-  border: 0;
-  outline: none;
-  :focus {
-    outline: 2px solid ${(props) => props.theme.yellowDark};
-  }
-  :hover {
-    cursor: pointer;
-    outline: 2px solid ${(props) => props.theme.yellowDark};
-  }
-`

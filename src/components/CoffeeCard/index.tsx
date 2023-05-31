@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import { Minus, Plus, ShoppingCart } from 'phosphor-react'
 import {
   ButtonShopCart,
@@ -10,6 +10,7 @@ import {
   InteractionsContainer,
   ThumbContainer,
 } from './styled'
+import { CartContext } from '../../contexts/CartContex'
 
 interface ICoffee {
   id: number
@@ -25,12 +26,22 @@ interface ICoffeeProps {
 }
 
 export function CoffeCard({ coffee }: ICoffeeProps) {
+  const { addCoffeeCart } = useContext(CartContext)
   const [quantity, setQuantity] = useState(1)
   function addOneQuantity() {
     setQuantity((value) => value + 1)
   }
   function decreasesOneQuantity() {
     setQuantity((value) => (value > 1 ? value - 1 : value))
+  }
+  function handleAddItemCart() {
+    addCoffeeCart({
+      id: coffee.id,
+      thumb: coffee.thumb,
+      title: coffee.title,
+      price: coffee.price,
+      quantity,
+    })
   }
   return (
     <CoffeeItem>
@@ -54,12 +65,12 @@ export function CoffeCard({ coffee }: ICoffeeProps) {
               <button onClick={decreasesOneQuantity}>
                 <Minus />
               </button>
-              <input type="number" min={1} value={quantity} />
+              <input disabled type="number" min={1} value={quantity} />
               <button onClick={addOneQuantity}>
                 <Plus />
               </button>
             </InputContainer>
-            <ButtonShopCart>
+            <ButtonShopCart onClick={handleAddItemCart}>
               <ShoppingCart size={22} weight="fill" />
             </ButtonShopCart>
           </InteractionsContainer>
