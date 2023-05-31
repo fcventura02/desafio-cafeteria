@@ -11,6 +11,7 @@ export const GlobalStyle = createGlobalStyle`
   body{
     background: ${(props) => props.theme.white};
     color: ${(props) => props.theme['gray-700']};
+    overflow-x: hidden;
   }
 
   body, input, button{

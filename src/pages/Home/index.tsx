@@ -10,8 +10,9 @@ import {
   ListContainer,
   TitleContainer,
 } from './styled'
-import { CoffeCard } from '../../components/CoffeeCard'
 import { useEffect, useState } from 'react'
+import { CoffeCard } from '../../components/CoffeeCard'
+import { Header } from '../../components/Header'
 
 export function Home() {
   const [mockData, setMockData] = useState<any[]>([])
@@ -28,6 +29,7 @@ export function Home() {
   }, [])
   return (
     <>
+      <Header />
       <IntroStyle>
         <HomeContainer>
           <TitleContainer>

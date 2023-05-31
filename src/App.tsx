@@ -1,12 +1,13 @@
 import { BrowserRouter } from 'react-router-dom'
 import { Rotas } from './rotas'
-import { Header } from './components/Header'
+import { CartContextProvider } from './contexts/CartContex'
 
 function App() {
   return (
     <BrowserRouter>
-      <Header />
-      <Rotas />
+      <CartContextProvider>
+        <Rotas />
+      </CartContextProvider>
     </BrowserRouter>
   )
 }
